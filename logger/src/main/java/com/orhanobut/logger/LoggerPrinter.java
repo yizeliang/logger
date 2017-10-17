@@ -184,18 +184,18 @@ final class LoggerPrinter implements Printer {
     @Override
     public void json(String json) {
         if (Helper.isEmpty(json)) {
-            d("Empty/Null json content");
+            e("Empty/Null json content");
             return;
         }
         try {
             json = json.trim();
             JSONObject jsonObject = new JSONObject(json);
             String message = jsonObject.toString(JSON_INDENT);
-            d(message);
+            e(message);
             return;
         } catch (JSONException e) {
             e("Invalid Json error");
-            d(json);
+            e(json);
         }
     }
 

@@ -3,6 +3,11 @@
 
 <img align="right" src='https://github.com/orhanobut/logger/blob/master/images/logger-logo.png' width='128' height='128'/>
 
+### 修改记录
+
+#### 2.1
+- 修复某些手机上 logger.json()不显示,修改log几倍为Error
+
 ### Logger
 Simple, pretty and powerful logger for android
 
