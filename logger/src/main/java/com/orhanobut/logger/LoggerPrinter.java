@@ -217,7 +217,7 @@ final class LoggerPrinter implements Printer {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             transformer.transform(xmlInput, xmlOutput);
-            d(xmlOutput.getWriter().toString().replaceFirst(">", ">\n"));
+            e(xmlOutput.getWriter().toString().replaceFirst(">", ">\n"));
         } catch (TransformerException e) {
             e("Invalid xml");
         }

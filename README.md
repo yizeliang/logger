@@ -5,8 +5,13 @@
 
 ### 修改记录
 
+
+
+#### 2.2
+- 修复某些手机上 logger.xml()不显示,修改log级别为Error(目前主要是针对华为)
+
 #### 2.1
-- 修复某些手机上 logger.json()不显示,修改log几倍为Error
+- 修复某些手机上 logger.json()不显示,修改log级别为Error(目前主要是针对华为)
 
 ### Logger
 Simple, pretty and powerful logger for android
