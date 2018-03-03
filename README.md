@@ -4,8 +4,11 @@
 <img align="right" src='https://github.com/orhanobut/logger/blob/master/images/logger-logo.png' width='128' height='128'/>
 
 ### 修改记录
+[![](https://jitpack.io/v/yizeliang/logger.svg)](https://jitpack.io/#yizeliang/logger)
 
 
+#### 2.3
+- log jsonarray bug fix
 
 #### 2.2
 - 修复某些手机上 logger.xml()不显示,修改log级别为Error(目前主要是针对华为)

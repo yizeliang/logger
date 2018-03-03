@@ -156,32 +156,6 @@ final class LoggerPrinter implements Printer {
     }
 
     @Override
-    public void jsonOld(String json) {
-        if (Helper.isEmpty(json)) {
-            d("Empty/Null json content");
-            return;
-        }
-        try {
-            json = json.trim();
-            if (json.startsWith("{")) {
-                JSONObject jsonObject = new JSONObject(json);
-                String message = jsonObject.toString(JSON_INDENT);
-                d(message);
-                return;
-            }
-            if (json.startsWith("[")) {
-                JSONArray jsonArray = new JSONArray(json);
-                String message = jsonArray.toString(JSON_INDENT);
-                d(message);
-                return;
-            }
-            e("Invalid Json");
-        } catch (JSONException e) {
-            e("Invalid Json");
-        }
-    }
-
-    @Override
     public void json(String json) {
         if (Helper.isEmpty(json)) {
             e("Empty/Null json content");
@@ -189,11 +163,20 @@ final class LoggerPrinter implements Printer {
         }
         try {
             json = json.trim();
-            JSONObject jsonObject = new JSONObject(json);
-            String message = jsonObject.toString(JSON_INDENT);
-            e(message);
+            if (json.startsWith("{")) {
+                JSONObject jsonObject = new JSONObject(json);
+                String message = jsonObject.toString(JSON_INDENT);
+                e(message);
+                return;
+            }
+            if (json.startsWith("[")) {
+                JSONArray jsonArray = new JSONArray(json);
+                String message = jsonArray.toString(JSON_INDENT);
+                e(message);
+                return;
+            }
             return;
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e("Invalid Json error");
             e(json);
         }
