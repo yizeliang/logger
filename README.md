@@ -4,10 +4,11 @@
 <img align="right" src='https://github.com/orhanobut/logger/blob/master/images/logger-logo.png' width='128' height='128'/>
 
 ### 修改记录
-[![](https://jitpack.io/v/yizeliang/logger.svg)](https://jitpack.io/#yizeliang/logger)
 
 
-#### 2.3
+
+#### 2.4
+- 2.3 不能构建
 - log jsonarray bug fix
 
 #### 2.2
