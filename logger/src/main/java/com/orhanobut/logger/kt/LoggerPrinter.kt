@@ -337,12 +337,14 @@ internal class LoggerPrinter : Printer {
         var i = MIN_STACK_OFFSET
         while (i < trace.size) {
             val e = trace[i]
+            val fileName = e.fileName
             val name = e.className
             val method = e.methodName
             if (name != LoggerPrinter::class.java.name
                     && name != KLog::class.java.name
                     && name != "VMStack"
-                    && !(name == "Thread" && method == "getStackTrace")) {
+                    && !(name == "Thread" && method == "getStackTrace")
+                    && ! fileName.contains("LogEx")) {
                 return --i
             }
             i++
