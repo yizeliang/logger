@@ -7,6 +7,18 @@
 [![](https://jitpack.io/v/yizeliang/logger.svg)](https://jitpack.io/#yizeliang/logger)
 
 
+`kotlin`版本
+
+
+#### 3.0
+
+- 修复kotlin 文件行数不对的bug
+
+
+`java`版本请使用2.5版本
+
+#### 2.5 修复bug
+
 #### 2.3
 - log jsonarray bug fix
 
