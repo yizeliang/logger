@@ -59,7 +59,7 @@ object KLog {
         printer.e(null, message, args)
     }
 
-    fun e(throwable: Throwable?, message: String, vararg args: Any) {
+    fun e(throwable: Throwable?, message: String?, vararg args: Any) {
         printer.e(throwable, message, *args)
     }
 

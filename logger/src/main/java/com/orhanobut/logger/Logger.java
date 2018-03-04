@@ -1,41 +1,20 @@
 package com.orhanobut.logger;
 
+import android.support.annotation.Nullable;
+
 import com.orhanobut.logger.kt.KLog;
 
 /**
  * Created by YZL on 2018/3/4.
  */
 public class Logger {
-    public static void d(String message, Object... args) {
-        KLog.INSTANCE.d(message, args);
+
+    public static void e(@Nullable String message) {
+        KLog.INSTANCE.e(message);
     }
 
-    public static void d(Object object) {
-        KLog.INSTANCE.d(object);
-    }
-
-    public static void e(String message, Object... args) {
-        KLog.INSTANCE.e(null, message, args);
-    }
-
-    public static void e(Throwable throwable, String message, Object... args) {
-        KLog.INSTANCE.e(throwable, message, args);
-    }
-
-    public static void i(String message, Object... args) {
-        KLog.INSTANCE.i(message, args);
-    }
-
-    public static void v(String message, Object... args) {
-        KLog.INSTANCE.v(message, args);
-    }
-
-    public static void w(String message, Object... args) {
-        KLog.INSTANCE.w(message, args);
-    }
-
-    public static void wtf(String message, Object... args) {
-        KLog.INSTANCE.wtf(message, args);
+    public static void e(@Nullable Throwable throwable, @Nullable String message) {
+        KLog.INSTANCE.e(throwable, message);
     }
 
     /**
@@ -43,7 +22,7 @@ public class Logger {
      *
      * @param json the json content
      */
-    public static void json(String json) {
+    public static void json(@Nullable String json) {
         KLog.INSTANCE.json(json);
     }
 
@@ -52,7 +31,7 @@ public class Logger {
      *
      * @param xml the xml content
      */
-    public static void xml(String xml) {
+    public static void xml(@Nullable String xml) {
         KLog.INSTANCE.xml(xml);
     }
 }
