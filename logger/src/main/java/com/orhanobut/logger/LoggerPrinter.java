@@ -401,7 +401,12 @@ final class LoggerPrinter implements Printer {
         for (int i = MIN_STACK_OFFSET; i < trace.length; i++) {
             StackTraceElement e = trace[i];
             String name = e.getClassName();
-            if (!name.equals(LoggerPrinter.class.getName()) && !name.equals(Logger.class.getName())) {
+            String method = e.getMethodName();
+            if (!name.equals(LoggerPrinter.class.getName())
+                    && !name.equals(Logger.class.getName())
+                    && !name.equals("VMStack")
+                    && !(name.equals("Thread") && method.equals("getStackTrace"))
+                    ) {
                 return --i;
             }
         }
