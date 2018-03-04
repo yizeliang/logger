@@ -13,7 +13,7 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.stream.StreamResult
 import javax.xml.transform.stream.StreamSource
 
-class LoggerPrinter : Printer {
+internal class LoggerPrinter : Printer {
 
     /**
      * tag is used for the Log, the name is a little different

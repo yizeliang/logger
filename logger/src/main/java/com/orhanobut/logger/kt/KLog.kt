@@ -1,11 +1,6 @@
 package com.orhanobut.logger.kt
 
 /**
- * 兼容 以前的Logger
- */
-typealias Logger = KLog
-
-/**
  * Logger is a wrapper of [android.util.Log]
  * But more pretty, simple and powerful
  */
