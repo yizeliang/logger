@@ -8,7 +8,7 @@ interface Printer {
 
     fun init(tag: String): Settings
 
-    fun d(message: String, vararg args: Any)
+    fun d(message: String?, vararg args: Any)
 
     fun d(`object`: Any)
 
@@ -16,17 +16,17 @@ interface Printer {
 
     fun e(throwable: Throwable?, message: String?, vararg args: Any)
 
-    fun w(message: String, vararg args: Any)
+    fun w(message: String?, vararg args: Any)
 
-    fun i(message: String, vararg args: Any)
+    fun i(message: String?, vararg args: Any)
 
-    fun v(message: String, vararg args: Any)
+    fun v(message: String?, vararg args: Any)
 
-    fun wtf(message: String, vararg args: Any)
+    fun wtf(message: String?, vararg args: Any)
 
-    fun json(json: String)
+    fun json(json: String?)
 
-    fun xml(xml: String)
+    fun xml(xml: String?)
 
     fun log(priority: Int, tag: String, message: String?, throwable: Throwable?)
 

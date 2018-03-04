@@ -1,5 +1,6 @@
 package com.orhanobut.logger.kt
 
+import com.orhanobut.logger.Logger
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -74,7 +75,7 @@ internal class LoggerPrinter : Printer {
         return this
     }
 
-    override fun d(message: String, vararg args: Any) {
+    override fun d(message: String?, vararg args: Any) {
         log(DEBUG, null, message, *args)
     }
 
@@ -96,30 +97,30 @@ internal class LoggerPrinter : Printer {
         log(ERROR, throwable, message, *args)
     }
 
-    override fun w(message: String, vararg args: Any) {
+    override fun w(message: String?, vararg args: Any) {
         log(WARN, null, message, *args)
     }
 
-    override fun i(message: String, vararg args: Any) {
+    override fun i(message: String?, vararg args: Any) {
         log(INFO, null, message, *args)
     }
 
-    override fun v(message: String, vararg args: Any) {
+    override fun v(message: String?, vararg args: Any) {
         log(VERBOSE, null, message, *args)
     }
 
-    override fun wtf(message: String, vararg args: Any) {
+    override fun wtf(message: String?, vararg args: Any) {
         log(ASSERT, null, message, *args)
     }
 
-    override fun json(json: String) {
+    override fun json(json: String?) {
         var json = json
         if (Helper.isEmpty(json)) {
             e("Empty/Null json content")
             return
         }
         try {
-            json = json.trim { it <= ' ' }
+            json = json!!.trim { it <= ' ' }
             if (json.startsWith("{")) {
                 val jsonObject = JSONObject(json)
                 val message = jsonObject.toString(JSON_INDENT)
@@ -145,9 +146,9 @@ internal class LoggerPrinter : Printer {
      *
      * @param xml the xml content
      */
-    override fun xml(xml: String) {
+    override fun xml(xml: String?) {
         if (Helper.isEmpty(xml)) {
-            d("Empty/Null xml content")
+            e("Empty/Null xml content")
             return
         }
         try {
@@ -340,8 +341,9 @@ internal class LoggerPrinter : Printer {
             val fileName = e.fileName
             val name = e.className
             val method = e.methodName
-            if (name != LoggerPrinter::class.java.name
+            if (  name != LoggerPrinter::class.java.name
                     && name != KLog::class.java.name
+                    && name != Logger::class.java.name
                     && name != "VMStack"
                     && !(name == "Thread" && method == "getStackTrace")
                     && ! fileName.contains("LogEx")) {

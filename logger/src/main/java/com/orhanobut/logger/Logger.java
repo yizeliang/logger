@@ -9,11 +9,12 @@ import com.orhanobut.logger.kt.KLog;
  */
 public class Logger {
 
-    public static void e(@Nullable String message) {
-        KLog.INSTANCE.e(message);
+    public static void e(@Nullable String message, Object... args) {
+        KLog.INSTANCE.e(message, args);
     }
 
-    public static void e(@Nullable Throwable throwable, @Nullable String message) {
+    @Deprecated
+    public static void e(@Nullable Throwable throwable, @Nullable String message, Object... args) {
         KLog.INSTANCE.e(throwable, message);
     }
 
