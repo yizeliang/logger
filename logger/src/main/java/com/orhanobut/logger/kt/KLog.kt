@@ -55,8 +55,12 @@ object KLog {
         printer.e(null, message)
     }
 
-    fun e(throwable: Throwable?, message: String? = null) {
+    fun e(throwable: Throwable?, message: String?) {
         printer.e(throwable, message)
+    }
+
+    fun e(throwable: Throwable?) {
+        printer.e(throwable, null)
     }
 
     fun i(message: String) {
