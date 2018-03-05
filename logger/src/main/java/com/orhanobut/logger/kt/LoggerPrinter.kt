@@ -3,11 +3,9 @@ package com.orhanobut.logger.kt
 import com.orhanobut.logger.Logger
 import org.json.JSONArray
 import org.json.JSONObject
-
 import java.io.StringReader
 import java.io.StringWriter
-import java.util.Arrays
-
+import java.util.*
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerException
 import javax.xml.transform.TransformerFactory
@@ -75,11 +73,10 @@ internal class LoggerPrinter : Printer {
         return this
     }
 
-    override fun d(message: String?, vararg args: Any) {
-        log(DEBUG, null, message, *args)
-    }
-
-    override fun d(`object`: Any) {
+    override fun d(`object`: Any?) {
+        if (`object` == null) {
+            return
+        }
         val message: String
         if (`object`.javaClass.isArray) {
             message = Arrays.deepToString(`object` as Array<Any>)
@@ -89,28 +86,28 @@ internal class LoggerPrinter : Printer {
         log(DEBUG, null, message)
     }
 
-    override fun e(message: String?, vararg args: Any) {
-        e(null, message, *args)
+    override fun e(message: String?) {
+        e(null, message)
     }
 
-    override fun e(throwable: Throwable?, message: String?, vararg args: Any) {
-        log(ERROR, throwable, message, *args)
+    override fun e(throwable: Throwable?, message: String?) {
+        log(ERROR, throwable, message)
     }
 
-    override fun w(message: String?, vararg args: Any) {
-        log(WARN, null, message, *args)
+    override fun w(message: String?) {
+        log(WARN, null, message)
     }
 
-    override fun i(message: String?, vararg args: Any) {
-        log(INFO, null, message, *args)
+    override fun i(message: String?) {
+        log(INFO, null, message)
     }
 
-    override fun v(message: String?, vararg args: Any) {
-        log(VERBOSE, null, message, *args)
+    override fun v(message: String?) {
+        log(VERBOSE, null, message)
     }
 
-    override fun wtf(message: String?, vararg args: Any) {
-        log(ASSERT, null, message, *args)
+    override fun wtf(message: String?) {
+        log(ASSERT, null, message)
     }
 
     override fun json(json: String?) {
@@ -218,12 +215,12 @@ internal class LoggerPrinter : Printer {
     /**
      * This method is synchronized in order to avoid messy of logs' order.
      */
-    @Synchronized private fun log(priority: Int, throwable: Throwable?, msg: String?, vararg args: Any?) {
+    @Synchronized private fun log(priority: Int, throwable: Throwable?, msg: String?) {
         if (settings.logLevel === LogLevel.NONE) {
             return
         }
         val tag = getTag()
-        val message = createMessage(msg, *args)
+        val message = createMessage(msg)
         log(priority, tag!!, message, throwable)
     }
 
@@ -321,11 +318,11 @@ internal class LoggerPrinter : Printer {
         return this.tag
     }
 
-    private fun createMessage(message: String?, vararg args: Any?): String {
+    private fun createMessage(message: String?): String {
         if (message == null) {
             return ""
         }
-        return if (args == null || args.size == 0) message else String.format(message, *args)
+        return message
     }
 
     /**
@@ -341,12 +338,12 @@ internal class LoggerPrinter : Printer {
             val fileName = e.fileName
             val name = e.className
             val method = e.methodName
-            if (  name != LoggerPrinter::class.java.name
+            if (name != LoggerPrinter::class.java.name
                     && name != KLog::class.java.name
                     && name != Logger::class.java.name
                     && name != "VMStack"
                     && !(name == "Thread" && method == "getStackTrace")
-                    && ! fileName.contains("LogEx")) {
+                    && !fileName.contains("LogEx")) {
                 return --i
             }
             i++

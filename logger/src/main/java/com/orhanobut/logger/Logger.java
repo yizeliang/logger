@@ -10,7 +10,7 @@ import com.orhanobut.logger.kt.KLog;
 public class Logger {
 
     public static void e(@Nullable String message, Object... args) {
-        KLog.INSTANCE.e(message, args);
+        KLog.INSTANCE.e(message);
     }
 
     @Deprecated

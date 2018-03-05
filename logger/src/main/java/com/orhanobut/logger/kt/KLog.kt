@@ -47,36 +47,32 @@ object KLog {
         printer.log(priority, tag, message, throwable)
     }
 
-    fun d(message: String, vararg args: Any) {
-        printer.d(message, *args)
-    }
-
     fun d(`object`: Any) {
         printer.d(`object`)
     }
 
-    fun e(message: String?, vararg args: Any) {
-        printer.e(null, message, args)
+    fun e(message: String?) {
+        printer.e(null, message)
     }
 
-    fun e(throwable: Throwable?, message: String?, vararg args: Any) {
-        printer.e(throwable, message, *args)
+    fun e(throwable: Throwable?, message: String?) {
+        printer.e(throwable, message)
     }
 
-    fun i(message: String, vararg args: Any) {
-        printer.i(message, *args)
+    fun i(message: String) {
+        printer.i(message)
     }
 
-    fun v(message: String, vararg args: Any) {
-        printer.v(message, *args)
+    fun v(message: String) {
+        printer.v(message)
     }
 
-    fun w(message: String, vararg args: Any) {
-        printer.w(message, *args)
+    fun w(message: String) {
+        printer.w(message)
     }
 
-    fun wtf(message: String, vararg args: Any) {
-        printer.wtf(message, *args)
+    fun wtf(message: String) {
+        printer.wtf(message)
     }
 
     /**
