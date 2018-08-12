@@ -11,6 +11,5 @@ public class Demo {
         Logger.e("aaaa");
         Exception e = new Exception();
         Logger.e("1",e);
-
     }
 }

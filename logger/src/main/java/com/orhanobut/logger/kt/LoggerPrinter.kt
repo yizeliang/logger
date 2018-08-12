@@ -182,7 +182,9 @@ internal class LoggerPrinter : Printer {
         }
 
         logTopBorder(priority, tag)
+        Thread.sleep(1)
         logHeaderContent(priority, tag, methodCount)
+        Thread.sleep(1)
 
         //get bytes of message with system's default charset (which is UTF-8 for Android)
         val bytes = message.toByteArray()
@@ -190,19 +192,23 @@ internal class LoggerPrinter : Printer {
         if (length <= CHUNK_SIZE) {
             if (methodCount > 0) {
                 logDivider(priority, tag)
+                Thread.sleep(1)
             }
             logContent(priority, tag, message)
+            Thread.sleep(1)
             logBottomBorder(priority, tag)
             return
         }
         if (methodCount > 0) {
             logDivider(priority, tag)
+            Thread.sleep(1)
         }
         var i = 0
         while (i < length) {
             val count = Math.min(length - i, CHUNK_SIZE)
             //create a new String with system's default charset (which is UTF-8 for Android)
             logContent(priority, tag, String(bytes, i, count))
+            Thread.sleep(1)
             i += CHUNK_SIZE
         }
         logBottomBorder(priority, tag)
@@ -233,7 +239,9 @@ internal class LoggerPrinter : Printer {
         val trace = Thread.currentThread().stackTrace
         if (settings.isShowThreadInfo) {
             logChunk(logType, tag, HORIZONTAL_DOUBLE_LINE + " Thread: " + Thread.currentThread().name)
+            Thread.sleep(1)
             logDivider(logType, tag)
+            Thread.sleep(1)
         }
         var level = ""
 
@@ -263,6 +271,7 @@ internal class LoggerPrinter : Printer {
                     .append(")")
             level += "   "
             logChunk(logType, tag, builder.toString())
+            Thread.sleep(1)
         }
     }
 
@@ -278,6 +287,7 @@ internal class LoggerPrinter : Printer {
         val lines = chunk.split(System.getProperty("line.separator").toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (line in lines) {
             logChunk(logType, tag, HORIZONTAL_DOUBLE_LINE + " " + line)
+            Thread.sleep(1)
         }
     }
 
