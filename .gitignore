@@ -24,6 +24,7 @@ proguard/
 .DS_Store
 /build
 .idea
+/.idea
 *.iml
 credential.properties
 /captures
