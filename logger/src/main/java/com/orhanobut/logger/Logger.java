@@ -1,6 +1,5 @@
 package com.orhanobut.logger;
 
-import android.support.annotation.Nullable;
 
 import com.orhanobut.logger.kt.KLog;
 
@@ -9,12 +8,12 @@ import com.orhanobut.logger.kt.KLog;
  */
 public class Logger {
 
-    public static void e(@Nullable String message, Object... args) {
+    public static void e(String message, Object... args) {
         KLog.INSTANCE.e(message);
     }
 
     @Deprecated
-    public static void e(@Nullable Throwable throwable, @Nullable String message, Object... args) {
+    public static void e(Throwable throwable, String message, Object... args) {
         KLog.INSTANCE.e(throwable, message);
     }
 
@@ -23,7 +22,7 @@ public class Logger {
      *
      * @param json the json content
      */
-    public static void json(@Nullable String json) {
+    public static void json(String json) {
         KLog.INSTANCE.json(json);
     }
 
@@ -32,7 +31,7 @@ public class Logger {
      *
      * @param xml the xml content
      */
-    public static void xml(@Nullable String xml) {
+    public static void xml(String xml) {
         KLog.INSTANCE.xml(xml);
     }
 }

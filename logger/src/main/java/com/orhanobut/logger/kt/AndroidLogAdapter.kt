@@ -1,49 +1,30 @@
 package com.orhanobut.logger.kt
 
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 
 internal class AndroidLogAdapter : LogAdapter {
-    companion object {
-        const val display = 10L
-    }
 
-    private val handle = Handler(Looper.getMainLooper())
     override fun d(tag: String, message: String) {
-        handle.postDelayed({
-            Log.d(tag, message)
-        }, display)
+        Log.d(tag, message)
     }
 
     override fun e(tag: String, message: String) {
-        handle.postDelayed({
-            Log.e(tag, message)
-        }, display)
-
+        Log.e(tag, message)
     }
 
     override fun w(tag: String, message: String) {
-        handle.postDelayed({
-            Log.w(tag, message)
-        }, display)
+        Log.w(tag, message)
     }
 
     override fun i(tag: String, message: String) {
-        handle.postDelayed({
-            Log.i(tag, message)
-        }, display)
+        Log.i(tag, message)
     }
 
     override fun v(tag: String, message: String) {
-        handle.postDelayed({
-            Log.v(tag, message)
-        }, display)
+        Log.v(tag, message)
     }
 
     override fun wtf(tag: String, message: String) {
-        handle.postDelayed({
-            Log.wtf(tag, message)
-        }, display)
+        Log.wtf(tag, message)
     }
 }
